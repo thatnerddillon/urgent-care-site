@@ -1,0 +1,116 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Urgent Care Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f6f8;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+    h1 {
+      color: #1e3a8a;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 200px);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #2563eb;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .summary {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .total {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .reset-btn {
+      background-color: #dc2626;
+      margin-top: 15px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+  const password = "Clinic123"; // change this
+
+  const userInput = prompt("Enter password:");
+
+  if (userInput !== password) {
+    document.body.innerHTML = "<h1>Access Denied</h1>";
+  }
+</script>
+
+<img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa6gEhVlHTqxsMOu7uIptLxRdGiUz4SJY8_w&s">
+<h1>AFC Urgent Care Service Selector</h1>
+
+<div class="button-grid">
+  <button onclick="addItem('Office Visit', 40)">Basic Visit - $125</button>
+  <button onclick="addItem('X-Ray', 75)">X-Ray - $75</button>
+  <button onclick="addItem('Flu Test', 45)">Flu Test - $45</button>
+  <button onclick="addItem('Blood Work', 85)">Blood Work - $85</button>
+  <button onclick="addItem('Physical', 95)">Physical - $95</button>
+  <button onclick="addItem('STD Test', 150)">IV Therapy - $150</button>
+</div>
+
+<div class="summary">
+  <h3>Selected Items</h3>
+  <ul id="itemList"></ul>
+  <div class="total">Total: $<span id="total">0</span></div>
+  <button class="reset-btn" onclick="resetCart()">Reset</button>
+</div>
+
+<script>
+  let total = 0;
+
+  function addItem(name, price) {
+    total += price;
+
+    const li = document.createElement("li");
+    li.textContent = name + " - $" + price;
+
+    document.getElementById("itemList").appendChild(li);
+    document.getElementById("total").textContent = total;
+  }
+
+  function resetCart() {
+    total = 0;
+    document.getElementById("itemList").innerHTML = "";
+    document.getElementById("total").textContent = 0;
+  }
+</script>
+
+</body>
+</html>
